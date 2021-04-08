@@ -13,5 +13,9 @@ choco install -y nodejs
 choco install -y git.install 
 
 # Clone repo
-mkdir c:\node-weight-tracker
-cd c:\node-weight-tracker
+$env:Path += ";C:\Program Files\Git\bin\"
+$env:Path += ";C:\Program Files\Git\cmd\"
+cd c:\
+git clone https://github.com/ronkaiser/node-weight-tracker.git
+cd .\node-weight-tracker\
+
