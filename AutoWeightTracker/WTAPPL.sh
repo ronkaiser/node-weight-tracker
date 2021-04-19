@@ -10,3 +10,6 @@ sudo apt install npm -y
 # clone repository using git
 git clone https://github.com/ronkaiser/node-weight-tracker.git
 cd ./node-weight-tracker/
+
+# pm2 install
+sudo npm install pm2@latest -g
