@@ -3,9 +3,10 @@
 #!/bin/bash
 
 # nodejs installation
-sudo apt update
-sudo apt install nodejs -y
-sudo apt install npm -y
+curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+node -v
 
 # clone repository using git
 git clone https://github.com/ronkaiser/node-weight-tracker.git
