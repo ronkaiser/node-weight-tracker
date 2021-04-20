@@ -19,7 +19,7 @@ sudo apt install nodejs
 node -v
 
 # npm initialization
-cd ../
+cd ~/node-weight-tracker/
 sudo npm init -y
 
 # dependencies installation
