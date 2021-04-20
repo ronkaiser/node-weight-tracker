@@ -28,7 +28,9 @@ ip=$(curl https://ipinfo.io/ip)
 read -p 'Okta domain: ' domain
 read -p 'Okta client ID: ' clientid
 read -p 'Okta client secret: ' secret
+read -p 'postgres username: ' username
 read -p 'postgres password: ' password
+read -p 'DB Server name in Azure: ' servername
 
 # env edit
 echo "# Host configuration
@@ -42,8 +44,8 @@ OKTA_ORG_URL=https://$domain
 OKTA_CLIENT_ID=$clientid
 OKTA_CLIENT_SECRET=$secret
 # Postgres configuration
-PGHOST=postgresql-ron.postgres.database.azure.com
-PGUSERNAME=postgresron
+PGHOST=$servername
+PGUSERNAME=$username
 PGDATABASE=postgres
 PGPASSWORD=$password
 PGPORT=5432" > .env
