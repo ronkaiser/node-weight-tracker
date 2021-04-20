@@ -5,7 +5,10 @@
 # run > chmod u+x WTAPPL.sh
 # run the script > ./WTAPPL.sh
 # Drink some coffee
+
+# PAY ATTENTION!!!
 # Don't forget to update IP in Okta website in login section
+# Username and password must be mached to Terraform
 
 #!/bin/bash
 
