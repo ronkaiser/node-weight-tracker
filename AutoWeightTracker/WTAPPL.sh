@@ -4,6 +4,8 @@
 # cd to > /home/linux/node-weight-tracker/AutoWeightTracker
 # run > chmod u+x WTAPPL.sh
 # run the script > ./WTAPPL.sh
+# Drink some coffee
+# Don't forget to update IP in Okta website in login section
 
 #!/bin/bash
 
@@ -46,5 +48,11 @@ PGDATABASE=postgres
 PGPASSWORD=$password
 PGPORT=5432" > .env
 
-# pm2 install
+# DB initialization
+sudo npm run initdb
+
+# pm2 to make process run after restart
 sudo npm install pm2@latest -g
+sudo pm2 start npm -- run dev
+sudo pm2 save
+sudo pm2 startup
