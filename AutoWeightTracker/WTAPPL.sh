@@ -48,7 +48,7 @@ OKTA_CLIENT_ID=$clientid
 OKTA_CLIENT_SECRET=$secret
 # Postgres configuration
 PGHOST=$servername
-PGUSERNAME=$username
+PGUSERNAME=$username@$servername
 PGDATABASE=postgres
 PGPASSWORD=$password
 PGPORT=5432" > .env
