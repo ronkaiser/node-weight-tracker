@@ -8,7 +8,7 @@
 
 # PAY ATTENTION!!!
 # Don't forget to update IP in Okta website in login section
-# Username and password must be mached to Terraform
+# Username and password must be matched to Terraform
 
 #!/bin/bash
 
