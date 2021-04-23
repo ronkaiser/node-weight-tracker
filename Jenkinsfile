@@ -3,7 +3,7 @@ pipeline {
   stages{
     stage('echo1') {
       steps {
-        sh 'pwd'
+        sh 'echo $BUILD_NUMBER'
       }
     }
     stage('echo2') {
