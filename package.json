@@ -1,6 +1,6 @@
 {
 	"name": "@ronkaiser/node-weight-tracker",
-	"version": "${SYSTEM.ENV:BUILD_VERSION}",
+	"version": "${BUILD_VERSION}",
 	"description": "Sample Node.js web application using hapi, PostgreSQL, and Okta",
 	"main": "src/index.js",
 	"scripts": {
