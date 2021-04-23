@@ -11,6 +11,9 @@
 	},
 	"keywords": [],
 	"author": "David Neal <david@reverentgeek.com> (https://reverentgeek.com)",
+	"repository": {
+		"url": "git://github.com/ronkaiser/node-weight-tracker.git"
+	},
 	"license": "MIT",
 	"devDependencies": {
 		"eslint": "^6.8.0",
