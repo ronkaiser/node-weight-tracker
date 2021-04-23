@@ -1,14 +1,14 @@
 pipeline {
-  agent any
+  agent slave
   stages{
-    stage('echo1') {
+    stage('initialization') {
       steps {
-        sh 'echo $BUILD_NUMBER'
+        sh 'npm init -y'
       }
     }
-    stage('echo2') {
+    stage('publish package') {
       steps {
-        sh 'echo Test2'
+        sh 'npm publish'
       }
     }
   }
