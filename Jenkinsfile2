@@ -3,7 +3,7 @@ pipeline {
   stages{
     stage('initialization') {
       steps {
-        sh 'npm init -y'
+        sh 'echo npm init -y'
       }
     }
     stage('publish package') {
