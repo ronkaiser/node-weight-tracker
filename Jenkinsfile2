@@ -1,0 +1,15 @@
+pipeline {
+  agent {label 'appslave'}
+  stages{
+    stage('initialization') {
+      steps {
+        sh 'npm init -y'
+      }
+    }
+    stage('publish package') {
+      steps {
+        sh 'echo npm publish'
+      }
+    }
+  }
+}
