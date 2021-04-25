@@ -1,3 +1,4 @@
+def outtodomain
 pipeline {
   agent {label 'appslave'}
   stages{
@@ -19,6 +20,7 @@ pipeline {
         secret = userInput.secret?:''
         password = userInput.password?:''
         servername = userInput.servername?:''
+        outtodomain = domain?:''
 
         //echo to console
         echo ("Your Okta domain: ${domain}")
@@ -40,7 +42,7 @@ pipeline {
     stage('Run Automation script') {
       steps {
         sh './AutoWeightTracker/WTAPPLJenkins.sh'
-        sh 'echo $domain'
+        sh 'echo $outtodomain'
       }
     }
   }
