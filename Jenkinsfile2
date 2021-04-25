@@ -1,5 +1,8 @@
 pipeline {
   agent {label 'appslave'}
+  environment {
+      domain
+  }
   stages{
     stage('App configuration') {
       steps {
@@ -35,7 +38,7 @@ pipeline {
     stage('Change permissions to Autoscript') {
       steps {
         sh 'echo chmod u+x ./AutoWeightTracker/WTAPPLJenkins.sh'
-        sh "sh printenv | sort"
+        sh 'echo $domain'
       }
     }
     stage('Run Automation script') {
