@@ -10,7 +10,7 @@
 # Don't forget to update IP in Okta website in login section
 # Username and password must be matched to Terraform
 
-#!/bin/bash
+
 
 # nodejs installation
 curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh
