@@ -34,13 +34,13 @@ pipeline {
     }
     stage('Change permissions to Autoscript') {
       steps {
-        sh 'pwd'
         sh 'chmod u+x ./AutoWeightTracker/WTAPPLJenkins.sh'
       }
     }
     stage('Run Automation script') {
       steps {
-        sh './AutoWeightTracker/WTAPPLJenkins.sh'
+        sh 'echo ./AutoWeightTracker/WTAPPLJenkins.sh'
+        sh 'echo $domain'
       }
     }
   }
