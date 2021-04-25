@@ -27,12 +27,12 @@ sudo npm install --save-dev nodemon@2 -y
 
 # get variables
 ip=$(curl https://ipinfo.io/ip)
-domain=$domain
-clientid=$clientid
-secret=$secret
+#domain=$domain
+#clientid=$clientid
+#secret=$secret
 #read -p 'postgres username: ' username
-password=$password
-servername=$servername
+#password=$password
+#servername=$servername
 
 # env edit
 echo "# Host configuration
