@@ -1,8 +1,5 @@
 pipeline {
   agent {label 'appslave'}
-  environment {
-      domain=${domain}
-  }
   stages{
     stage('App configuration') {
       steps {
