@@ -19,7 +19,6 @@ sudo apt install nodejs
 node -v
 
 # npm initialization
-cd ~/node-weight-tracker/
 sudo npm init -y
 
 # dependencies installation
@@ -28,12 +27,12 @@ sudo npm install --save-dev nodemon@2 -y
 
 # get variables
 ip=$(curl https://ipinfo.io/ip)
-read -p 'Okta domain: ' domain
-read -p 'Okta client ID: ' clientid
-read -p 'Okta client secret: ' secret
+domain=$domain
+clientid=$clientid
+secret=$secret
 #read -p 'postgres username: ' username
-read -p 'postgres password: ' password
-read -p 'DB Server name in Azure: ' servername
+password=$password
+servername=$servername
 
 # env edit
 echo "# Host configuration
