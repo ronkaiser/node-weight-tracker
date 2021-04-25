@@ -20,7 +20,7 @@ pipeline {
         secret = userInput.secret?:''
         password = userInput.password?:''
         servername = userInput.servername?:''
-        outtodomain = ${domain}
+        outtodomain = "${domain}"
 
         //echo to console
         echo ("Your Okta domain: ${domain}")
