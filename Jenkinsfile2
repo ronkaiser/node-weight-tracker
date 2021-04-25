@@ -36,12 +36,12 @@ pipeline {
     }
     stage('Change permissions to Autoscript') {
       steps {
-        sh 'chmod u+x ./AutoWeightTracker/WTAPPLJenkins.sh'
+        sh 'echo chmod u+x ./AutoWeightTracker/WTAPPLJenkins.sh'
       }
     }
     stage('Run Automation script') {
       steps {
-        sh './AutoWeightTracker/WTAPPLJenkins.sh'
+        sh 'echo ./AutoWeightTracker/WTAPPLJenkins.sh'
         sh 'echo $outtodomain'
       }
     }
