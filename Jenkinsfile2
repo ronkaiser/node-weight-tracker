@@ -29,9 +29,6 @@ pipeline {
         
         // export variables so bash automation script will be able to use them
         sh 'export domain clientid secret password servername'
-        
-        sh 'chmod u+x ./AutoWeightTracker/WTAPPLJenkins.sh'
-        sh './AutoWeightTracker/WTAPPLJenkins.sh'
         }
       }
     }
