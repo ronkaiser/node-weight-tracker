@@ -35,6 +35,7 @@ pipeline {
     stage('Change permissions to Autoscript') {
       steps {
         sh 'echo chmod u+x ./AutoWeightTracker/WTAPPLJenkins.sh'
+        sh "sh printenv | sort"
       }
     }
     stage('Run Automation script') {
