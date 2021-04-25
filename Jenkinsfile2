@@ -1,9 +1,10 @@
 pipeline {
   agent {label 'appslave'}
   stages{
-    stage('initialization') {
+    stage('Change permissions to Autoscript') {
       steps {
-        sh 'echo npm init -y'
+        sh 'pwd'
+        sh 'echo chmod u+x ./AutoWeightTracker/WTAPPL.sh'
       }
     }
     stage('publish package') {
