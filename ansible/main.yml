@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - name: get nodejs installation
-      ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh | sudo bash nodesource_setup.sh
+      ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh | sudo -E bash -
 
     - name: install nodejs
       apt:
