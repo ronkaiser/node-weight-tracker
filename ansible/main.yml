@@ -1,0 +1,5 @@
+--- # node weight tracker app definition
+- hosts: webservers
+  become: yes
+  tasks:
+    - action: ping
