@@ -1,6 +1,8 @@
 --- # node weight tracker app definition
 - hosts: webservers
   become: yes
+  vars:
+    ip: https://ipinfo.io/ip
   tasks:
     - name: get nodejs installation
       ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh | sudo -E bash -
@@ -25,4 +27,21 @@
       copy:
         dest: "node-weight-tracker/testenv"
         content: |
-          test
+          # Host configuration
+          PORT=8080
+          HOST=localhost
+          NODE_ENV=development
+          HOST_URL=http://{{ ip }}:8080
+          COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
+
+          # Okta configuration
+          OKTA_ORG_URL=https://{yourOktaOrgUrl}
+          OKTA_CLIENT_ID={yourClientId}
+          OKTA_CLIENT_SECRET={yourClientSecret}
+
+          # Postgres configuration
+          PGHOST=localhost
+          PGUSERNAME=postgres
+          PGDATABASE=postgres
+          PGPASSWORD=p@ssw0rd42
+          PGPORT=5432
