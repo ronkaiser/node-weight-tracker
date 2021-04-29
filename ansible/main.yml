@@ -13,4 +13,4 @@
     - name: project initialization
       ansible.builtin.shell: pwd
       args:
-        chdir: "/.."
+        chdir: "/home/ansible/node-weight-tracker/"
