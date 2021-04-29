@@ -1,8 +1,6 @@
 --- # node weight tracker app definition
 - hosts: webservers
   become: yes
-  vars:
-    ip: https://ipinfo.io/ip
   tasks:
     - name: get nodejs installation
       ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh | sudo -E bash -
@@ -22,6 +20,12 @@
          cmd: |
            sudo npm install @hapi/hapi@19 @hapi/bell@12 @hapi/boom@9 @hapi/cookie@11 @hapi/inert@6 @hapi/joi@17 @hapi/vision@6 dotenv@8 ejs@3 postgres@1 -y
            sudo npm install --save-dev nodemon@2 -y
+
+    - name: get public IP for env
+      community.general.ipify_facts:
+        api_url: https://ipinfo.io/ip
+        timeout: 20
+        register: ip
 
     - name: create env file
       copy:
