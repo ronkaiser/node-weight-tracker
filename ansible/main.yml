@@ -11,6 +11,6 @@
         state: present
 
     - name: project initialization
-      ansible.builtin.shell: pwd
+      ansible.builtin.shell: touch testfileforpath
       args:
         chdir: "/home/ansible/node-weight-tracker/"
