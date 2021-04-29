@@ -24,3 +24,5 @@
     - name: create env file
       copy:
         dest: "node-weight-tracker/testenv"
+        content: |
+          test
