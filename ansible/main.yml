@@ -9,3 +9,8 @@
       apt:
         name: nodejs
         state: present
+
+    - name: project initialization
+      ansible.builtin.shell: pwd
+      args:
+        chdir: "/.."
