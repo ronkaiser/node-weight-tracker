@@ -23,9 +23,7 @@
 
     - name: get public IP for env
       community.general.ipify_facts:
-        api_url: https://ipinfo.io/ip
         timeout: 20
-        register: ip
 
     - name: create env file
       copy:
@@ -35,7 +33,7 @@
           PORT=8080
           HOST=localhost
           NODE_ENV=development
-          HOST_URL=http://{{ ip }}:8080
+          HOST_URL=http://{{ ipify_public_ip }}:8080
           COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
 
           # Okta configuration
