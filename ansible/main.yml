@@ -12,5 +12,3 @@
 
     - name: project initialization
       ansible.builtin.shell: touch testfileforpath
-      args:
-        chdir: "/home/ansible/node-weight-tracker/"
