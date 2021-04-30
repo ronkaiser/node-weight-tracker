@@ -29,10 +29,18 @@
 
     - name: app dependencies installation
       become: yes
-      shell:
-         cmd: |
-           npm install @hapi/hapi@19 @hapi/bell@12 @hapi/boom@9 @hapi/cookie@11 @hapi/inert@6 @hapi/joi@17 @hapi/vision@6 dotenv@8 ejs@3 postgres@1 -y
-           npm install --save-dev nodemon@2 -y
+      ansible.builtin.shell: npm install @hapi/hapi@19 @hapi/bell@12 @hapi/boom@9 @hapi/cookie@11 @hapi/inert@6 @hapi/joi@17 @hapi/vision@6 dotenv@8 ejs@3 postgres@1 -y
+
+    - name: nodemon installation
+      become: yes
+      ansible.builtin.shell: npm install --save-dev nodemon@2 -y
+
+    #- name: app dependencies installation
+    #  become: yes
+    #  shell:
+    #     cmd: |
+    #       npm install @hapi/hapi@19 @hapi/bell@12 @hapi/boom@9 @hapi/cookie@11 @hapi/inert@6 @hapi/joi@17 @hapi/vision@6 dotenv@8 ejs@3 postgres@1 -y
+    #       npm install --save-dev nodemon@2 -y
 
     - name: get public IP for env
       community.general.ipify_facts:
