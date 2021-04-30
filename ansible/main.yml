@@ -42,7 +42,7 @@
       copy:
         owner: ansible
         group: ansible
-        dest: "node-weight-tracker/.env.sample"
+        dest: "node-weight-tracker/.env"
         content: |
           # Host configuration
           PORT=8080
