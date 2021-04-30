@@ -29,7 +29,7 @@
 
     - name: create env file
       copy:
-        dest: "node-weight-tracker/testenv"
+        dest: "node-weight-tracker/.env"
         content: |
           # Host configuration
           PORT=8080
@@ -49,3 +49,16 @@
           PGDATABASE=postgres
           PGPASSWORD={{ password }}
           PGPORT=5432
+
+    - name: DB initialization
+      ansible.builtin.shell: sudo npm run initdb
+      args:
+        chdir: "node-weight-tracker/"
+
+    - name: pm2 to make process run after restart
+      shell:
+         cmd: |
+           sudo npm install pm2@latest -g
+           sudo pm2 start npm -- run dev
+           sudo pm2 save
+           sudo pm2 startup
