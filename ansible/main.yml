@@ -40,7 +40,7 @@
 
     - name: create env file
       copy:
-        dest: "node-weight-tracker/.env.sample"
+        dest: "node-weight-tracker/.env"
         content: |
           # Host configuration
           PORT=8080
