@@ -10,7 +10,7 @@
           dest: node-weight-tracker/nodesource_setup.sh
           mode: 0764
 
-    - name: run nodejs setup configuration file
+    - name: run nodejs configuration file
       become: yes
       ansible.builtin.shell: bash nodesource_setup.sh
       args:
@@ -61,6 +61,7 @@
           PGPORT=5432
 
     - name: DB initialization
+      become: yes
       ansible.builtin.shell: npm run initdb
       args:
         chdir: "node-weight-tracker/"
