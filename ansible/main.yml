@@ -11,9 +11,10 @@
           mode: 0764
 
     - name: run nodejs file
-        ansible.builtin.shell: sudo bash nodesource_setup.sh
-        args:
-          chdir: "node-weight-tracker/"
+      become: yes
+      ansible.builtin.shell: bash nodesource_setup.sh
+      args:
+        chdir: "node-weight-tracker/"
 
     #- name: run nodejs installation
     #  become: yes
