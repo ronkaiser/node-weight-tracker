@@ -76,7 +76,7 @@ Next, create a folder in the project named `src`. In the `src` folder, create fo
    > plugins
    > routes
    > templates
-.env
+sample.env
 package-lock.json
 package.json
 ```
