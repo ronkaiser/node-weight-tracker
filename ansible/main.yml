@@ -1,6 +1,8 @@
 --- # node weight tracker app definition
 - hosts: webservers
   become: yes
+  vars_files:
+    - vault.yml
   tasks:
     - name: get nodejs installation
       ansible.builtin.shell: curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh | sudo -E bash -
@@ -37,13 +39,13 @@
           COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
 
           # Okta configuration
-          OKTA_ORG_URL=https://{yourOktaOrgUrl}
-          OKTA_CLIENT_ID={yourClientId}
-          OKTA_CLIENT_SECRET={yourClientSecret}
+          OKTA_ORG_URL=https://{{ domain }}
+          OKTA_CLIENT_ID={{ clientid }}
+          OKTA_CLIENT_SECRET={{ secret }}
 
           # Postgres configuration
-          PGHOST=localhost
-          PGUSERNAME=postgres
+          PGHOST={{ servername }}
+          PGUSERNAME=postgres@{{ servername }}
           PGDATABASE=postgres
-          PGPASSWORD=p@ssw0rd42
+          PGPASSWORD={{ password }}
           PGPORT=5432
