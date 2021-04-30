@@ -38,29 +38,30 @@
       community.general.ipify_facts:
         timeout: 20
 
-    #- name: create env file
-    #  copy:
-    #    owner: ansible
-    #    dest: "node-weight-tracker/.env"
-    #    content: |
-    #      # Host configuration
-    #      PORT=8080
-    #      HOST=localhost
-    #      NODE_ENV=development
-    #      HOST_URL=http://{{ ipify_public_ip }}:8080
-    #      COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
+    - name: create env file
+      copy:
+        owner: ansible
+        group: ansible
+        dest: "node-weight-tracker/.env.sample"
+        content: |
+          # Host configuration
+          PORT=8080
+          HOST=0.0.0.0
+          NODE_ENV=development
+          HOST_URL=http://{{ ipify_public_ip }}:8080
+          COOKIE_ENCRYPT_PWD=superAwesomePasswordStringThatIsAtLeast32CharactersLong!
 
-    #      # Okta configuration
-    #      OKTA_ORG_URL=https://{{ domain }}
-    #      OKTA_CLIENT_ID={{ clientid }}
-    #      OKTA_CLIENT_SECRET={{ secret }}
+          # Okta configuration
+          OKTA_ORG_URL=https://{{ domain }}
+          OKTA_CLIENT_ID={{ clientid }}
+          OKTA_CLIENT_SECRET={{ secret }}
 
           # Postgres configuration
-    #      PGHOST={{ servername }}
-    #      PGUSERNAME=postgres@{{ servername }}
-    #      PGDATABASE=postgres
-    #      PGPASSWORD={{ password }}
-    #      PGPORT=5432
+          PGHOST={{ servername }}
+          PGUSERNAME=postgres@{{ servername }}
+          PGDATABASE=postgres
+          PGPASSWORD={{ password }}
+          PGPORT=5432
 
     - name: DB initialization
       become: yes
