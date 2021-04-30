@@ -13,7 +13,8 @@
         state: present
 
     - name: project initialization
-      ansible.builtin.shell: sudo npm init -y
+      become: yes
+      ansible.builtin.shell: npm init -y
       args:
         chdir: "node-weight-tracker/"
 
