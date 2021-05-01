@@ -7,7 +7,7 @@
     - name: check if repo exists
       ansible.builtin.git:
         repo: 'https://github.com/ronkaiser/node-weight-tracker.git'
-        dest: .
+        dest: ./node-weight-tracker
 
     - name: update nodejs package
       ansible.builtin.shell: curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
