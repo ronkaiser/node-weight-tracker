@@ -24,6 +24,11 @@
       community.general.ipify_facts:
         timeout: 20
 
+    - name: check if repo exists
+      ansible.builtin.git:
+        repo: 'https://github.com/ronkaiser/node-weight-tracker.git'
+        dest: .
+
     - name: create env file
       copy:
         dest: "node-weight-tracker/.env"
