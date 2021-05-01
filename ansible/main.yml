@@ -4,43 +4,21 @@
   vars_files:
     - vault.yml
   tasks:
-    - name: get nodejs installation
-      get_url:
-          url: https://deb.nodesource.com/setup_14.x
-          dest: node-weight-tracker/nodesource_setup.sh
-          mode: 0764
-
-    - name: run nodejs configuration file
-      become: yes
-      ansible.builtin.shell: bash nodesource_setup.sh
-      args:
-        chdir: "node-weight-tracker/"
+    - name: update nodejs package
+      ansible.builtin.shell: curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
 
     - name: install nodejs
       apt:
         name: nodejs
         state: present
 
-    - name: project initialization
-      become: yes
-      ansible.builtin.shell: npm init -y
+    - name: install node dependecies
+      shell: npm install
       args:
-        chdir: "node-weight-tracker/"
+        chdir: node-weight-tracker/
 
-    - name: app dependencies installation
-      become: yes
-      ansible.builtin.shell: npm install @hapi/hapi@19 @hapi/bell@12 @hapi/boom@9 @hapi/cookie@11 @hapi/inert@6 @hapi/joi@17 @hapi/vision@6 dotenv@8 ejs@3 postgres@1 -y
-
-    - name: nodemon installation
-      become: yes
-      ansible.builtin.shell: npm install --save-dev nodemon@2 -y
-
-    #- name: app dependencies installation
-    #  become: yes
-    #  shell:
-    #     cmd: |
-    #       npm install @hapi/hapi@19 @hapi/bell@12 @hapi/boom@9 @hapi/cookie@11 @hapi/inert@6 @hapi/joi@17 @hapi/vision@6 dotenv@8 ejs@3 postgres@1 -y
-    #       npm install --save-dev nodemon@2 -y
+    - name: install pm2
+      shell: npm install pm2 -g
 
     - name: get public IP for env
       community.general.ipify_facts:
@@ -48,8 +26,6 @@
 
     - name: create env file
       copy:
-        owner: ansible
-        group: ansible
         dest: "node-weight-tracker/.env"
         content: |
           # Host configuration
@@ -72,17 +48,15 @@
           PGPORT=5432
 
     - name: DB initialization
-      become: yes
       ansible.builtin.shell: npm run initdb
       args:
         chdir: "node-weight-tracker/"
 
-    - name: pm2 to make process run after restart
-      shell:
-         cmd: |
-           sudo npm install pm2@latest -g
-           sudo pm2 start npm -- run dev
-           sudo pm2 save
-           sudo pm2 startup
+    - name: clear process
+      shell: pm2 delete all
+      ignore_errors: yes
+
+    - name: run application
+      shell: pm2 start npm -- run dev && pm2 save && pm2 startup
       args:
-        chdir: "node-weight-tracker/"
+        chdir: node-weight-tracker/
