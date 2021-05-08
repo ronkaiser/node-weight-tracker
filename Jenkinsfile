@@ -5,7 +5,7 @@ pipeline {
 
   environment {
     dockerImage =''
-    registry = 'ronkaiser86/wtapp'
+    registry = 'ronkaiser86/wtapp:$BUILD_NUMBER'
   }
 
   // clean environment with new files
