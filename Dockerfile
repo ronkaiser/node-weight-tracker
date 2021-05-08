@@ -1,4 +1,4 @@
-FROM node:16-alpine
+FROM node:15-alpine
 
 #crate dircetory and copy repo
 WORKDIR  /node-weight-tracker
