@@ -6,6 +6,7 @@ pipeline {
   environment {
     dockerImage =''
     registry = 'ronkaiser86/wtapp:$BUILD_NUMBER'
+    registryCredential ='dockerhub_id'
   }
 
   // clean environment with new files
@@ -25,5 +26,15 @@ pipeline {
         }
       }
     }
+
+    // Push the image into docker registry
+    stage ('Push To Registry')
+      steps {
+        script {
+          docker.withRegistry( '', registryCredential ) {
+          dockerImage.push()
+          }
+        }
+      }
+    }
   }
-}
