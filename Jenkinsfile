@@ -5,7 +5,7 @@ pipeline {
 
   environment {
     dockerImage =''
-    registry = 'ronkaiser86/wtapp:$BUILD_NUMBER'
+    registry = 'ronkaiser86/wtapp:latest'
     registryCredential ='dockerhub_id'
   }
 
