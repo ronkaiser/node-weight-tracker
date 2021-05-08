@@ -3,21 +3,9 @@ pipeline {
     label 'slave'
   }
   stages {
-    stage('Build') {
+    stage('Checkout') {
       steps {
-        sh 'npm install'
+        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ronkaiser/node-weight-tracker.git']]])
       }
     }
-
-    stage('Build Image') {
-      steps {
-        sh 'docker build -t $DOCKER_REPOSITORY/demo-app:$BUILD_NUMBER .'
-      }
-    }
-
-    stage('Publish Image') {
-      steps {
-        sh 'docker login -u ronkaiser86 -p $DOCKER_CREDS'
-        sh 'docker push $DOCKER_REPOSITORY/demo-app:$BUILD_NUMBER'
-      }
-    }
+  }
