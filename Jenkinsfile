@@ -2,10 +2,27 @@ pipeline {
   agent {
     label 'slave'
   }
+
+  environment {
+    dockerImage =''
+    registry = 'ronkaiser86/wtapp'
+  }
+
+  // clean environment with new files
   stages {
     stage('Checkout') {
       steps {
-        checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ronkaiser/node-weight-tracker.git']]])
+        cleanWs()
+        checkout scm
+      }
+    }
+
+    // Build docker image
+    stage('Create Docker Image') {
+      steps {
+        script {
+          dockerImage = docker.build registry
+        }
       }
     }
   }
